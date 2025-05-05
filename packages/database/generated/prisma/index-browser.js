@@ -127,9 +127,86 @@ exports.Prisma.UserScalarFieldEnum = {
   name: 'name'
 };
 
+exports.Prisma.CompanyScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  companyName: 'companyName',
+  displayName: 'displayName',
+  claimCompanyEmailDomain: 'claimCompanyEmailDomain',
+  unionPercent: 'unionPercent',
+  status: 'status',
+  ratingLevel: 'ratingLevel',
+  dbeStatuses: 'dbeStatuses'
+};
+
+exports.Prisma.AssessmentsReportScalarFieldEnum = {
+  id: 'id',
+  companyId: 'companyId',
+  companyCompletePercentage: 'companyCompletePercentage',
+  safetyCompletePercentage: 'safetyCompletePercentage',
+  financeCompletePercentage: 'financeCompletePercentage',
+  canHaveBadge: 'canHaveBadge'
+};
+
+exports.Prisma.AddressScalarFieldEnum = {
+  id: 'id',
+  companyId: 'companyId',
+  street1: 'street1',
+  street2: 'street2',
+  city: 'city',
+  stateName: 'stateName',
+  stateCode: 'stateCode',
+  postalCode: 'postalCode',
+  countryCode: 'countryCode',
+  latitude: 'latitude',
+  longitude: 'longitude'
+};
+
+exports.Prisma.TradeScalarFieldEnum = {
+  id: 'id',
+  companyId: 'companyId',
+  tradeId: 'tradeId',
+  number: 'number',
+  title: 'title',
+  level: 'level',
+  category: 'category',
+  archived: 'archived',
+  parent: 'parent',
+  tradeNumberSlug: 'tradeNumberSlug'
+};
+
+exports.Prisma.CompanyContractSizeScalarFieldEnum = {
+  id: 'id',
+  companyId: 'companyId',
+  minContractSizeId: 'minContractSizeId',
+  maxContractSizeId: 'maxContractSizeId'
+};
+
+exports.Prisma.ContractSizeScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  label: 'label',
+  labelSlug: 'labelSlug',
+  amount: 'amount'
+};
+
+exports.Prisma.ProjectScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  status: 'status',
+  companyId: 'companyId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.JsonNullValueInput = {
+  JsonNull: Prisma.JsonNull
 };
 
 exports.Prisma.QueryMode = {
@@ -142,9 +219,28 @@ exports.Prisma.NullsOrder = {
   last: 'last'
 };
 
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
+};
+exports.ProjectStatus = exports.$Enums.ProjectStatus = {
+  PLANNING: 'PLANNING',
+  IN_PROGRESS: 'IN_PROGRESS',
+  ON_HOLD: 'ON_HOLD',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED'
+};
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  Company: 'Company',
+  AssessmentsReport: 'AssessmentsReport',
+  Address: 'Address',
+  Trade: 'Trade',
+  CompanyContractSize: 'CompanyContractSize',
+  ContractSize: 'ContractSize',
+  Project: 'Project'
 };
 
 /**

@@ -4,10 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "db:generate": "prisma generate",
+    "generate": "prisma generate",
     "db:migrate": "prisma migrate dev --skip-generate",
     "db:deploy": "prisma migrate deploy",
-    "studio": "prisma studio"
+    "studio": "prisma studio",
+    "seed": "npx tsx prisma/seed/index.ts"
   },
   "dependencies": {
     "@faker-js/faker": "^9.7.0",
@@ -25,9 +26,6 @@
     "ts-node": "^10.9.2",
     "tsup": "^8.0.1",
     "typescript": "^5.8.2"
-  },
-  "prisma": {
-    "seed": "ts-node prisma/seed.ts"
   },
   "exports": {
     ".": "./src/index.ts"

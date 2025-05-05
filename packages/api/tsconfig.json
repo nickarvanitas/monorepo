@@ -4,7 +4,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@repo/database": ["../database/src"],
-      "@repo/schema": ["../schema/src"]
+      "@repo/types": ["../types/src"]
     }
   },
   "include": ["."],

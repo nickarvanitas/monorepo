@@ -17,3 +17,98 @@ model User {
   email     String   @unique
   name      String?
 }
+
+model Company {
+  id                    String   @id @default(uuid())
+  slug                  String
+  companyName           String
+  displayName           String
+  claimCompanyEmailDomain String
+  unionPercent          Int
+  status                String
+  ratingLevel           Int
+  assessmentsReport     AssessmentsReport?
+  address               Address?
+  dbeStatuses           Json     // assuming an array of objects
+  trades                Trade[]
+  companyContractSize   CompanyContractSize[]
+  projects              Project[]
+}
+
+model AssessmentsReport {
+  id                       Int     @id @default(autoincrement())
+  companyId                String  @unique
+  companyCompletePercentage Int
+  safetyCompletePercentage  Int
+  financeCompletePercentage Int
+  canHaveBadge             Boolean
+  company                  Company @relation(fields: [companyId], references: [id])
+}
+
+model Address {
+  id           Int     @id @default(autoincrement())
+  companyId    String  @unique
+  street1      String
+  street2      String?
+  city         String
+  stateName    String
+  stateCode    String
+  postalCode   String
+  countryCode  String
+  latitude     String
+  longitude    String
+  company      Company @relation(fields: [companyId], references: [id])
+}
+
+model Trade {
+  id              Int     @id @default(autoincrement())
+  companyId       String
+  tradeId         Int
+  number          String
+  title           String
+  level           Int
+  category        Int
+  archived        Boolean
+  parent          Int?
+  tradeNumberSlug String
+  company         Company @relation(fields: [companyId], references: [id])
+}
+
+model CompanyContractSize {
+  id                 Int     @id @default(autoincrement())
+  companyId          String
+  minContractSizeId  Int
+  maxContractSizeId  Int
+  minContractSize    ContractSize @relation("MinSize", fields: [minContractSizeId], references: [id])
+  maxContractSize    ContractSize @relation("MaxSize", fields: [maxContractSizeId], references: [id])
+  company            Company      @relation(fields: [companyId], references: [id])
+}
+
+model ContractSize {
+  id         Int     @id @default(autoincrement())
+  name       String
+  label      String
+  labelSlug  String
+  amount     Int
+  minSizes   CompanyContractSize[] @relation("MinSize")
+  maxSizes   CompanyContractSize[] @relation("MaxSize")
+}
+
+model Project {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  startDate   DateTime
+  endDate     DateTime?
+  status      ProjectStatus @default(PLANNING)
+  company     Company  @relation(fields: [companyId], references: [id])
+  companyId   String
+}
+
+enum ProjectStatus {
+  PLANNING
+  IN_PROGRESS
+  ON_HOLD
+  COMPLETED
+  CANCELLED
+}
