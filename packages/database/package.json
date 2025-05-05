@@ -4,34 +4,30 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "tsup",
-    "clean": "rimraf .turbo node_modules dist",
     "db:generate": "prisma generate",
-    "db:push": "prisma db push --skip-generate",
-    "db:seed": "prisma db seed",
-    "dev": "tsup --watch",
-    "format": "prisma format",
-    "lint": "eslint .",
+    "db:migrate": "prisma migrate dev --skip-generate",
+    "db:deploy": "prisma migrate deploy",
     "studio": "prisma studio"
   },
   "dependencies": {
-    "@prisma/client": "^5.10.2",
+    "@faker-js/faker": "^9.7.0",
+    "@prisma/client": "^6.7.0",
     "bcryptjs": "^2.4.3"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@types/bcryptjs": "^2.4.6",
-    "@types/node": "^20.11.19",
+    "@types/node": "^20.17.32",
     "eslint": "^8.56.0",
-    "prisma": "^5.10.2",
+    "prisma": "^6.7.0",
     "rimraf": "^5.0.5",
     "ts-node": "^10.9.2",
     "tsup": "^8.0.1",
-    "typescript": "^5.3.3"
+    "typescript": "^5.8.2"
   },
   "prisma": {
-    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+    "seed": "ts-node prisma/seed.ts"
   },
   "exports": {
     ".": "./src/index.ts"
