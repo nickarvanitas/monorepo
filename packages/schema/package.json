@@ -1,0 +1,33 @@
+{
+  "name": "@repo/schema",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "clean": "rimraf .turbo node_modules dist",
+    "dev": "tsup --watch",
+    "lint": "eslint ."
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "^20.11.19",
+    "eslint": "^8.56.0",
+    "rimraf": "^5.0.5",
+    "tsup": "^8.4.0",
+    "typescript": "^5.3.3"
+  }
+}
